@@ -19,3 +19,16 @@ func main() {
         fmt.Println(*key.Key)
     }
 }
+
+
+uploader := s3manager.NewUploader(sess)
+
+_, err = uploader.Upload(&s3manager.UploadInput{
+    Bucket: aws.String(AWS_S3_BUCKET), // Bucket to be used
+    Key:    aws.String(filename),      // Name of the file to be saved
+    Body:   file,                      // File
+})
+if err != nil {
+    // Do your error handling here
+    return
+}
