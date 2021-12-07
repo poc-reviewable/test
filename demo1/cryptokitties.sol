@@ -119,8 +119,7 @@ contract KittyAccessControl {
     // convenience. The less we use an address, the less likely it is that we somehow compromise the
     // account.
 
-    /// @dev Emited when contract is upgraded - See README.md for updgrade plan
-    event ContractUpgrade(address newContract);
+
 
     // The addresses of the accounts (or contracts) that can execute actions within each roles.
     address public ceoAddress;
@@ -148,14 +147,6 @@ contract KittyAccessControl {
         _;
     }
 
-    modifier onlyCLevel() {
-        require(
-            msg.sender == cooAddress ||
-            msg.sender == ceoAddress ||
-            msg.sender == cfoAddress
-        );
-        _;
-    }
 
     /// @dev Assigns a new address to act as the CEO. Only available to the current CEO.
     /// @param _newCEO The address of the new CEO
@@ -524,7 +515,10 @@ contract KittyOwnership is KittyBase, ERC721 {
     function _approvedFor(address _claimant, uint256 _tokenId) internal view returns (bool) {
         return kittyIndexToApproved[_tokenId] == _claimant;
     }
-
+  
+    some code goes here 
+    
+    
     /// @dev Marks an address as being approved for transferFrom(), overwriting any previous
     ///  approval. Setting _approved to address(0) clears all transfer approval.
     ///  NOTE: _approve() does NOT send the Approval event. This is intentional because
