@@ -13,7 +13,9 @@ func main() {
     params := &s3.ListObjectsInput{
         Bucket: aws.String("bucket"),
     }
-
+    
+    fmt.Println("I love defi")
+    
     resp, _ := svc.ListObjects(params)
     for _, key := range resp.Contents {
         fmt.Println(*key.Key)
